@@ -3,7 +3,13 @@ import { CommonModule } from "@angular/common";
 
 import { ScoreboardRoutingModule } from "./scoreboard-routing.module";
 import { ScoreboardComponent } from "./scoreboard.component";
-import { QueueComponent, TimerComponent, ScoreComponent } from "./components";
+import {
+  QueueComponent,
+  TimerComponent,
+  ScoreComponent,
+  AddPlayerDialogComponent,
+  AddPlayerButtonComponent
+} from "./components";
 import { SharedModule } from "../shared";
 
 @NgModule({
@@ -12,8 +18,11 @@ import { SharedModule } from "../shared";
     QueueComponent,
     TimerComponent,
     ScoreComponent,
-    ScoreboardComponent
+    ScoreboardComponent,
+    AddPlayerButtonComponent,
+    AddPlayerDialogComponent
   ],
-  exports: [ScoreboardComponent]
+  exports: [ScoreboardComponent],
+  entryComponents: [AddPlayerDialogComponent]
 })
 export class ScoreboardModule {}
