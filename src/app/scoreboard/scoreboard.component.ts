@@ -7,7 +7,7 @@ import { AddPlayerDialogComponent } from "@app/scoreboard/components";
   selector: "fgcq-scoreboard",
   template: `
     <fgcq-timer></fgcq-timer>
-    <fgcq-score [match]="match"></fgcq-score>
+    <fgcq-current-match [match]="match"></fgcq-current-match>
     <fgcq-queue [players]="players"></fgcq-queue>
     <fgcq-add-player-button (onAddPlayer)="addPlayer()"><fgcq-add-player-button>
   `,

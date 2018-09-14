@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Match } from "@app/shared";
 
 @Component({
-  selector: "fgcq-score",
+  selector: "fgcq-current-match",
   template: `
     <div>
       <fgcq-player-card [player]="match.playerOne"></fgcq-player-card>
@@ -21,7 +21,7 @@ import { Match } from "@app/shared";
     `
       :host {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         width: 75%;
       }
 
@@ -29,11 +29,16 @@ import { Match } from "@app/shared";
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+      }
+
+      p {
+        margin-bottom: 0px;
       }
     `
   ]
 })
-export class ScoreComponent implements OnInit {
+export class CurrentMatchComponent implements OnInit {
   @Input()
   match: Match;
 

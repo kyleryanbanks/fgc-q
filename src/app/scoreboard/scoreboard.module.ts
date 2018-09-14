@@ -6,7 +6,7 @@ import { ScoreboardComponent } from "./scoreboard.component";
 import {
   QueueComponent,
   TimerComponent,
-  ScoreComponent,
+  CurrentMatchComponent,
   AddPlayerDialogComponent,
   AddPlayerButtonComponent
 } from "./components";
@@ -17,7 +17,7 @@ import { SharedModule } from "../shared";
   declarations: [
     QueueComponent,
     TimerComponent,
-    ScoreComponent,
+    CurrentMatchComponent,
     ScoreboardComponent,
     AddPlayerButtonComponent,
     AddPlayerDialogComponent
