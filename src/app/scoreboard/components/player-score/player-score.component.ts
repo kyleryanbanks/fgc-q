@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "fgcq-player-score",
   template: `
-    <div class="name">{{player}}</div>
-    <div class="score">{{score}}</div>
+    <div (click)="getNextPlayer()" class="name">{{player}}</div>
+    <div (click)="nextPoint()" class="score">{{score}}</div>
   `,
   styles: [
     `
@@ -20,6 +20,7 @@ import { Component, OnInit, Input } from "@angular/core";
         color: white;
         font-weight: bold;
         font-size: 64px;
+        margin: 10px;
       }
 
       .score {
@@ -33,20 +34,32 @@ import { Component, OnInit, Input } from "@angular/core";
         border-width: 10px;
         color: red;
         height: 150px;
-        width: 250px;
+        width: 260px;
         font-weight: bold;
         font-size: 144px;
       }
     `
   ]
 })
-export class PlayerScoreComponent implements OnInit {
+export class PlayerScoreComponent {
   @Input()
   player: string;
   @Input()
   score: number;
 
+  @Output()
+  updateScore = new EventEmitter();
+  @Output()
+  nextPlayer = new EventEmitter();
+
   constructor() {}
 
-  ngOnInit() {}
+  getNextPlayer() {
+    console.log("emit next player");
+    this.nextPlayer.emit(this.player);
+  }
+
+  nextPoint() {
+    this.updateScore.emit();
+  }
 }

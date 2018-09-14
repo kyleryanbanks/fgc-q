@@ -3,7 +3,8 @@ import { Component } from "@angular/core";
 @Component({
   selector: "app-root",
   template: `
-    <fgcq-scoreboard></fgcq-scoreboard>
+    <router-outlet></router-outlet>
+    <fgcq-queue></fgcq-queue>
   `,
   styles: []
 })

@@ -5,6 +5,8 @@ import { AppComponent } from "./app.component";
 import { ScoreboardModule } from "./scoreboard/";
 import { CoreModule } from "./core/core.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppRoutingModule } from "@app/app-routing.module";
+import { QueueModule } from './queue/queue.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,7 +14,9 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BrowserModule,
     ScoreboardModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    QueueModule
   ],
   providers: [],
   bootstrap: [AppComponent]

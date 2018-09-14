@@ -1,19 +1,26 @@
 import { Component } from "@angular/core";
-import { Match } from "@app/shared";
-import { MatDialog } from "@angular/material";
-import { AddPlayerDialogComponent } from "@app/scoreboard/components";
+import { PlayerService } from "@app/core/services";
+import { TimerService } from "@app/timer.service";
+import { DateTime } from "luxon";
 
 @Component({
   selector: "fgcq-scoreboard",
   template: `
-    <fgcq-timer></fgcq-timer>
+    <fgcq-timer [timer]="timer"></fgcq-timer>
     <div class="currentMatch">
-      <fgcq-player-score [player]="p1" [score]="p1s"></fgcq-player-score>
-      <fgcq-set-count [count]="ft"></fgcq-set-count>
-      <fgcq-player-score [player]="p2" [score]="p2s"></fgcq-player-score>
+      <fgcq-player-score 
+        (nextPlayer)="updatePlayerOne($event)" 
+        (updateScore)="updatePlayerOneScore()"
+        [player]="playerOne" 
+        [score]="playerOneScore"></fgcq-player-score>
+      <fgcq-set-count 
+        [count]="ft"></fgcq-set-count>
+      <fgcq-player-score 
+        (nextPlayer)="updatePlayerTwo($event)" 
+        (updateScore)="updatePlayerTwoScore()"
+        [player]="playerTwo" 
+        [score]="playerTwoScore"></fgcq-player-score>
     </div>
-    <fgcq-queue [players]="players"></fgcq-queue>
-    <fgcq-add-player-button (onAddPlayer)="addPlayer()"><fgcq-add-player-button>
   `,
   styles: [
     `
@@ -22,6 +29,7 @@ import { AddPlayerDialogComponent } from "@app/scoreboard/components";
         width: 100vw;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         background-color: black;
       }
@@ -39,30 +47,44 @@ import { AddPlayerDialogComponent } from "@app/scoreboard/components";
   ]
 })
 export class ScoreboardComponent {
-  players: String[] = ["Player 1", "Player 2", "Player 3"];
-  p1 = "ML|Merkyl";
-  p1s = "99";
-  p2 = "Covert|Sodnine";
-  p2s = "99";
-  ft = "999";
+  playerOne: string;
+  playerOneScore: number;
+  playerTwo: string;
+  playerTwoScore: number;
+  timer: DateTime;
 
-  match: Match = {
-    playerOne: "Foo",
-    playerTwo: "Bar",
-    playerOneScore: 1,
-    playerTwoScore: 2,
-    firstTo: 3
-  };
+  constructor(
+    private players: PlayerService,
+    private timerService: TimerService
+  ) {
+    this.playerOne = players.playerOne;
+    this.playerOneScore = 0;
+    this.playerTwo = players.playerTwo;
+    this.playerTwoScore = 0;
+    this.timer = timerService.timer;
+  }
 
-  constructor(public dialog: MatDialog) {}
+  ft = 3;
 
-  addPlayer(): void {
-    const dialogRef = this.dialog.open(AddPlayerDialogComponent);
+  updatePlayerOne(player) {
+    this.players.add(player);
+    this.playerOne = this.players.nextPlayerOne();
+    this.timer = this.timerService.reset();
+    this.playerOneScore = 0;
+  }
 
-    dialogRef.afterClosed().subscribe(playerName => {
-      if (playerName) {
-        this.players.push(playerName);
-      }
-    });
+  updatePlayerOneScore() {
+    this.playerOneScore += 1;
+  }
+
+  updatePlayerTwo(player) {
+    this.players.add(player);
+    this.playerTwo = this.players.nextPlayerTwo();
+    this.timer = this.timerService.reset();
+    this.playerTwoScore = 0;
+  }
+
+  updatePlayerTwoScore() {
+    this.playerTwoScore += 1;
   }
 }
