@@ -4,7 +4,6 @@ import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
 import { ScoreboardModule } from "./scoreboard/";
 import { CoreModule } from "./core/core.module";
-import { SharedModule } from "./shared/shared.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -13,7 +12,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     BrowserModule,
     ScoreboardModule,
     CoreModule,
-    SharedModule,
     BrowserAnimationsModule
   ],
   providers: [],

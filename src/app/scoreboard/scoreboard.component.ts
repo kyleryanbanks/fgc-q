@@ -1,11 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { Match } from "@app/shared";
 
 @Component({
   selector: "fgcq-scoreboard",
   template: `
     <fgcq-timer></fgcq-timer>
-    <fgcq-score></fgcq-score>
-    <fgcq-queue></fgcq-queue>
+    <fgcq-score [match]="match"></fgcq-score>
+    <fgcq-queue [players]="players"></fgcq-queue>
   `,
   styles: [
     `
@@ -17,8 +18,14 @@ import { Component, OnInit } from "@angular/core";
     `
   ]
 })
-export class ScoreboardComponent implements OnInit {
-  constructor() {}
+export class ScoreboardComponent {
+  players: String[] = ["Player 1", "Player 2", "Player 3"];
 
-  ngOnInit() {}
+  match: Match = {
+    playerOne: "Foo",
+    playerTwo: "Bar",
+    playerOneScore: 1,
+    playerTwoScore: 2,
+    firstTo: 3
+  };
 }

@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { PlayerComponent } from "./components";
+import { PlayerCardComponent, DigitComponent } from "./components";
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [PlayerComponent]
+  imports: [CommonModule, MatCardModule],
+  declarations: [PlayerCardComponent, DigitComponent],
+  exports: [PlayerCardComponent, DigitComponent]
 })
 export class SharedModule {}

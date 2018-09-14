@@ -1,19 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'fgcq-queue',
+  selector: "fgcq-queue",
   template: `
-    <p>
-      queue works!
-    </p>
+    <fgcq-player-card *ngFor="let player of players" [player]="player"></fgcq-player-card>
   `,
   styles: []
 })
-export class QueueComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class QueueComponent {
+  @Input()
+  players = [];
 }
