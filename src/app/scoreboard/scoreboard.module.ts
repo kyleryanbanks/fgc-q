@@ -3,21 +3,17 @@ import { CommonModule } from "@angular/common";
 
 import { ScoreboardRoutingModule } from "./scoreboard-routing.module";
 import { ScoreboardComponent } from "./scoreboard.component";
-import {
-  QueueComponent,
-  TimerComponent,
-  ScoreComponent,
-  PlayerComponent
-} from "./components";
+import { QueueComponent, TimerComponent, ScoreComponent } from "./components";
+import { SharedModule } from "../shared";
 
 @NgModule({
-  imports: [CommonModule, ScoreboardRoutingModule],
+  imports: [CommonModule, ScoreboardRoutingModule, SharedModule],
   declarations: [
     QueueComponent,
     TimerComponent,
     ScoreComponent,
-    ScoreboardComponent,
-    PlayerComponent
-  ]
+    ScoreboardComponent
+  ],
+  exports: [ScoreboardComponent]
 })
 export class ScoreboardModule {}

@@ -1,2 +1,2 @@
 export { SharedModule } from "./shared.module";
-export * from "./components/player/player.component";
+export * from "./components";

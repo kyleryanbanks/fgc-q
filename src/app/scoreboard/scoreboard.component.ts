@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'fgcq-scoreboard',
+  selector: "fgcq-scoreboard",
   template: `
-    <p>
-      scoreboard works!
-    </p>
+    <fgcq-timer></fgcq-timer>
+    <fgcq-score></fgcq-score>
+    <fgcq-queue></fgcq-queue>
   `,
-  styles: []
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    `
+  ]
 })
 export class ScoreboardComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
