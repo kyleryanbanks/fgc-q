@@ -8,7 +8,9 @@ import {
   TimerComponent,
   CurrentMatchComponent,
   AddPlayerDialogComponent,
-  AddPlayerButtonComponent
+  AddPlayerButtonComponent,
+  SetCountComponent,
+  PlayerScoreComponent
 } from "./components";
 import { SharedModule } from "../shared";
 
@@ -20,7 +22,9 @@ import { SharedModule } from "../shared";
     CurrentMatchComponent,
     ScoreboardComponent,
     AddPlayerButtonComponent,
-    AddPlayerDialogComponent
+    AddPlayerDialogComponent,
+    SetCountComponent,
+    PlayerScoreComponent
   ],
   exports: [ScoreboardComponent],
   entryComponents: [AddPlayerDialogComponent]

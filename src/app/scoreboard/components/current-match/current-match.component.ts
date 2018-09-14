@@ -9,7 +9,7 @@ import { Match } from "@app/shared";
       <fgcq-digit [digit]="match.playerOneScore"></fgcq-digit>
     </div>
     <div>
-      <p>First To</p>
+      <p>FT</p>
       <fgcq-digit [digit]="match.firstTo"></fgcq-digit>
     </div>
     <div>
@@ -22,7 +22,7 @@ import { Match } from "@app/shared";
       :host {
         display: flex;
         justify-content: space-evenly;
-        width: 75%;
+        width: 66%;
       }
 
       div {
